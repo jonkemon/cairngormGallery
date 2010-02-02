@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="vertical">
+	<control:PTController xmlns:control="com.telecoms.media.flexGallery.control.*"/>
+	<rds:Services xmlns:rds="com.telecoms.media.flexGallery.business.*"/>
+	<gallery:photoDisplay xmlns:gallery="com.telecoms.media.flexGallery.view.gallery.*"/>
+</mx:Application>
