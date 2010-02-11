@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:TileList xmlns:mx="http://www.adobe.com/2006/mxml" backgroundColor="0x000000" height="200" width="450" creationComplete="galleryInit()">
-	<mx:Script>
-		<![CDATA[
-			import com.telecoms.media.flexGallery.control.events.gallery.LoadImagesEvent;
-			private function galleryInit():void
-			{
-				var event:LoadImagesEvent=null;
-				event=new LoadImagesEvent();
-				event.dispatch();
-			}
-		]]>
-	</mx:Script>
+<mx:TileList xmlns:mx="http://www.adobe.com/2006/mxml" backgroundColor="0x000000" height="200" width="450">
+<mx:Script>
+	<![CDATA[
+		import com.telecoms.media.flexGallery.model.PhotosModelLocator;
+		private var model:PhotosModelLocator = PhotosModelLocator.getInstance();
+		public var totalImages:int = new int;
+		
+		private function createImageTiles():void{
+			totalImages = model.photoAdresses.length();
+		}
+		
+	]]>
+</mx:Script>
+	<mx:TileList id="photoTileList">
+		
+	</mx:TileList>
 </mx:TileList>

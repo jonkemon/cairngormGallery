@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rds:ServiceLocator xmlns:rds="com.adobe.cairngorm.business.*" xmlns:mx="http://www.adobe.com/2006/mxml">
-	<mx:HTTPService id="photoRetrieve" url="../xml/photoData.xml"/>
+	<mx:HTTPService id="photoRetrieve" url="xml/photoData.xml" resultFormat="e4x"/>
 </rds:ServiceLocator>
