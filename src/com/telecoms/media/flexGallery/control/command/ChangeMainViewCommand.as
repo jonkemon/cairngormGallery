@@ -12,6 +12,7 @@ package com.telecoms.media.flexGallery.control.command
 		{
 			var evt:ChangeMainViewEvent = event as ChangeMainViewEvent;
 			this.model.photoAdresses = evt.goTo;
+			trace(model.photoAdresses);
 		}
 		
 	}

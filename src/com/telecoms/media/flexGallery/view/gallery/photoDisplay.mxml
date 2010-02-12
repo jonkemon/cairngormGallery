@@ -2,44 +2,49 @@
 <mx:HBox xmlns:mx="http://www.adobe.com/2006/mxml" backgroundColor="0x000000" height="200" width="450" paddingLeft="10" paddingTop="10">
 <mx:Script>
 	<![CDATA[
+		import com.telecoms.media.flexGallery.control.events.gallery.LoadImagesEvent;
+		import com.telecoms.media.flexGallery.control.events.gallery.ChangeMainViewEvent;
 		import mx.core.UIComponent;
 		import mx.controls.Image;
 		import com.telecoms.media.flexGallery.control.command.CreateImageHolder;
  		import com.telecoms.media.flexGallery.model.PhotosModelLocator;
 		
+		[Bindable]
 		public var model:PhotosModelLocator = PhotosModelLocator.getInstance();
-		
-		
 		private function createImageTiles():void
 		{
-			/* var photo:Image = new Image();
-			photo.source = model.photoAdresses.image[0].url;
-			photo.width = 200;
-			photo.height = 100;
-			photo.x = 0;
-			photo.y = 0; */
+			var event:LoadImagesEvent=null;
+			event=new LoadImagesEvent();
+			event.dispatch();
 			
+			var totalImages:int = model.photoAdresses.image.length();
+			trace(totalImages);
+			
+			for(var i:int=0;i<totalImages;i++)
+			{
+				var photo:Image = new Image();
+				photo.source = model.photoAdresses.image[i].url;
+				photo.name = "photo"+i;
+				photoTileList.addChild(photo);
+				photo.x = i * 80;
+				photo.y = 10;
+				model.photoObjects.push(photo.name);
+				trace(model.photoObjects[0]);
+			};			
+	
 			var photoHolder:Image = new Image;
-			/* photoHolder.addChild(photo); */
-			photoHolder.source = "http://media2.telecoms.com/loader_flash/cws_slide/images/cws_photo2.png";
+
+			//photoHolder.source = "http://media2.telecoms.com/loader_flash/cws_slide/images/cws_photo2.png";
 			photoTileList.addChild(photoHolder);
 			
 			photoHolder.x = 10;
 			photoHolder.y = 10;
-			
-			/* trace('La');
-			var totalImages:int = new int;
-			totalImages = model.photoObjects.length as int;
-			trace(totalImages);
-			
-			for (var i:int=0;i<4;i++){
-			photoTileList.addChild(model.photoObjects[i]);
-			} */
-		} 
+		}
 	]]>
 </mx:Script>
 		
-	<mx:Panel id="photoTileList" backgroundColor="#FFFFFF" height="179" width="430" paddingLeft="10" paddingTop="20">
+	<mx:Panel id="photoTileList" backgroundColor="#FFFFFF" height="179" width="430" paddingLeft="10" paddingTop="20" creationCompleteEffect="{createImageTiles()}">
 		<!--<mx:Image source="http://media2.telecoms.com/loader_flash/cws_slide/images/cws_photo2.png"  scaleContent="false" width="200" height="100"/>-->
+		<mx:Label text="{model.photoAdresses.image[0].url}" width="341" height="108"/>
 	</mx:Panel>
 </mx:HBox>

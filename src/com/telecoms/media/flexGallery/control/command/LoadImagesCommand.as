@@ -27,17 +27,7 @@ package com.telecoms.media.flexGallery.control.command
 		private function onResults(event:ResultEvent):void
 		{
 			model.photoAdresses = event.token.result as XML;
-			
-			var totalImages:int = new int;
-			totalImages = model.photoAdresses.image.length();
-			
-			for(var i:int=0;i<totalImages;i++)
-			{
-				var photo:CreateImageHolder = new CreateImageHolder(model.photoAdresses.image[i].url);
-				photo.name = "photo"+i;
-				model.photoObjects.push(photo.name);
-			};
-			trace(model.photoObjects);
+			trace(model.photoAdresses.image.length());
 		}
 	}
 }
