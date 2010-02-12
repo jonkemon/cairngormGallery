@@ -11,19 +11,24 @@
 		
 		[Bindable]
 		public var model:PhotosModelLocator = PhotosModelLocator.getInstance();
-		private function createImageTiles():void
+		private function loadXML():void
 		{
 			var event:LoadImagesEvent=null;
 			event=new LoadImagesEvent();
 			event.dispatch();
 			
-			var totalImages:int = model.photoAdresses.image.length();
+			createImageTiles();
+		}
+		
+		private function createImageTiles():void
+		{	
+			var totalImages:int = PhotosModelLocator.getInstance().photoAdresses.image.length();
 			trace(totalImages);
 			
 			for(var i:int=0;i<totalImages;i++)
 			{
 				var photo:Image = new Image();
-				photo.source = model.photoAdresses.image[i].url;
+				photo.source = PhotosModelLocator.getInstance().photoAdresses.image[i].url;
 				photo.name = "photo"+i;
 				photoTileList.addChild(photo);
 				photo.x = i * 80;
@@ -43,7 +48,7 @@
 	]]>
 </mx:Script>
 		
-	<mx:Panel id="photoTileList" backgroundColor="#FFFFFF" height="179" width="430" paddingLeft="10" paddingTop="20" creationCompleteEffect="{createImageTiles()}">
+	<mx:Panel id="photoTileList" backgroundColor="#FFFFFF" height="179" width="430" paddingLeft="10" paddingTop="20" creationCompleteEffect="{loadXML()}">
 		<!--<mx:Image source="http://media2.telecoms.com/loader_flash/cws_slide/images/cws_photo2.png"  scaleContent="false" width="200" height="100"/>-->
 		<mx:Label text="{model.photoAdresses.image[0].url}" width="341" height="108"/>
 	</mx:Panel>
