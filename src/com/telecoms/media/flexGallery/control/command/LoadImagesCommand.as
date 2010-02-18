@@ -27,20 +27,12 @@ package com.telecoms.media.flexGallery.control.command
 		{
 			model.photoAdresses = event.token.result as XML;
 			
-			var totalImages:int = model.photoAdresses.image.length();
-			trace(totalImages);
+			var totalImages:int = model.photoAdresses.images.length();
 			for (var i:int=0;i<totalImages;i++){
 			var photo:String = new String;
-			photo = model.photoAdresses.image[i].url;
+			photo = model.photoAdresses.images[i].url;
 			model.photoObjects.addItem(photo);
 			}
-			trace(model.photoObjects);
-			
-			/* 
-			trace(model.photoObjects);
-			var data:Object = {Artist:"Pavement", Price:"11.99", Album:"Slanted and Enchanted"};
-			model.photoObjects.addItem(data);
-			trace(model.photoObjects); */
 		}
 	}
 }

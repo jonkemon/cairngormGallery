@@ -1,18 +1,18 @@
 <?xml version="1.0"?>
 <content>
-	<image id="1">
+	<images id="1">
 	    <url>http://media2.telecoms.com/loader_flash/cws_slide/images/cws_photo1.png</url>
-	</image>
-	<image id="2">
+	</images>
+	<images id="2">
 	    <url>http://media2.telecoms.com/loader_flash/cws_slide/images/cws_photo2.png</url>
-	</image>
-	<image id="3">
+	</images>
+	<images id="3">
 	    <url>http://media2.telecoms.com/loader_flash/cws_slide/images/cws_photo3.png</url>
-	</image>
-	<image id="4">
+	</images>
+	<images id="4">
 	    <url>http://media2.telecoms.com/loader_flash/cws_slide/images/cws_photo4.png</url>
-	</image>
-	<image id="5">
+	</images>
+	<images id="5">
 	    <url>http://media2.telecoms.com/loader_flash/cws_slide/images/cws_photo5.png</url>
-	</image>	
+	</images>	
 </content>

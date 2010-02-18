@@ -20,11 +20,13 @@
 </mx:Script>
 
 	<mx:Component id="ImageRenderer">
-            <mx:Image source="{data}" height="80" width="80"/>
+		<mx:VBox verticalScrollPolicy="off" horizontalScrollPolicy="off">
+            <mx:Image source="{data}"/>
+		</mx:VBox>
     </mx:Component>
 		
 	<mx:HorizontalList id="photoTileList" backgroundColor="#FFFFFF" height="179" width="430"
-		 paddingLeft="10" paddingTop="20" dataProvider="{model.photoObjects}" itemRenderer="{ImageRenderer}"
-		 columnCount="4" rowHeight="400" columnWidth="300">
+		 dataProvider="{model.photoObjects}" itemRenderer="{ImageRenderer}"
+		 columnCount="4" rowHeight="150" columnWidth="200">
 	</mx:HorizontalList>
 </mx:HBox>
