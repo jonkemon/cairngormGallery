@@ -1,23 +1,18 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0"?>
 <content>
-	<image>
+	<image id="1">
 	    <url>http://media2.telecoms.com/loader_flash/cws_slide/images/cws_photo1.png</url>
-	    <quote>setting the regions’ telco agendas ….</quote>
 	</image>
-	<image>
+	<image id="2">
 	    <url>http://media2.telecoms.com/loader_flash/cws_slide/images/cws_photo2.png</url>
-	    <quote>saving travel costs &amp; time</quote>
 	</image>
-	<image>
+	<image id="3">
 	    <url>http://media2.telecoms.com/loader_flash/cws_slide/images/cws_photo3.png</url>
-	    <quote>building your brand</quote>
 	</image>
-	<image>
+	<image id="4">
 	    <url>http://media2.telecoms.com/loader_flash/cws_slide/images/cws_photo4.png</url>
-	    <quote>delivering high-level business leads</quote>
 	</image>
-	<image>
+	<image id="5">
 	    <url>http://media2.telecoms.com/loader_flash/cws_slide/images/cws_photo5.png</url>
-	    <quote>in high growth telecoms markets</quote>
 	</image>	
 </content>

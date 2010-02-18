@@ -3,7 +3,6 @@ package com.telecoms.media.flexGallery.control.command
 	import com.adobe.cairngorm.commands.ICommand;
 	import com.adobe.cairngorm.control.CairngormEvent;
 	import com.telecoms.media.flexGallery.control.delegates.LoadImagesDelegate;
-	import com.telecoms.media.flexGallery.control.events.gallery.ChangeMainViewEvent;
 	import com.telecoms.media.flexGallery.model.PhotosModelLocator;
 	
 	import mx.controls.Alert;
@@ -27,7 +26,21 @@ package com.telecoms.media.flexGallery.control.command
 		private function onResults(event:ResultEvent):void
 		{
 			model.photoAdresses = event.token.result as XML;
-			trace(model.photoAdresses.image.length());
+			
+			var totalImages:int = model.photoAdresses.image.length();
+			trace(totalImages);
+			for (var i:int=0;i<totalImages;i++){
+			var photo:String = new String;
+			photo = model.photoAdresses.image[i].url;
+			model.photoObjects.addItem(photo);
+			}
+			trace(model.photoObjects);
+			
+			/* 
+			trace(model.photoObjects);
+			var data:Object = {Artist:"Pavement", Price:"11.99", Album:"Slanted and Enchanted"};
+			model.photoObjects.addItem(data);
+			trace(model.photoObjects); */
 		}
 	}
 }

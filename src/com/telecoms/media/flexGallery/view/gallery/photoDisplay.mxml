@@ -3,7 +3,6 @@
 <mx:Script>
 	<![CDATA[
 		import com.telecoms.media.flexGallery.control.events.gallery.LoadImagesEvent;
-		import com.telecoms.media.flexGallery.control.events.gallery.ChangeMainViewEvent;
 		import mx.core.UIComponent;
 		import mx.controls.Image;
 		import com.telecoms.media.flexGallery.control.command.CreateImageHolder;
@@ -16,40 +15,16 @@
 			var event:LoadImagesEvent=null;
 			event=new LoadImagesEvent();
 			event.dispatch();
-			
-			createImageTiles();
-		}
-		
-		private function createImageTiles():void
-		{	
-			var totalImages:int = PhotosModelLocator.getInstance().photoAdresses.image.length();
-			trace(totalImages);
-			
-			for(var i:int=0;i<totalImages;i++)
-			{
-				var photo:Image = new Image();
-				photo.source = PhotosModelLocator.getInstance().photoAdresses.image[i].url;
-				photo.name = "photo"+i;
-				photoTileList.addChild(photo);
-				photo.x = i * 80;
-				photo.y = 10;
-				model.photoObjects.push(photo.name);
-				trace(model.photoObjects[0]);
-			};			
-	
-			var photoHolder:Image = new Image;
-
-			//photoHolder.source = "http://media2.telecoms.com/loader_flash/cws_slide/images/cws_photo2.png";
-			photoTileList.addChild(photoHolder);
-			
-			photoHolder.x = 10;
-			photoHolder.y = 10;
 		}
 	]]>
 </mx:Script>
+
+	<mx:Component id="ImageRenderer">
+            <mx:Image source="{data}" height="80" width="80"/>
+    </mx:Component>
 		
-	<mx:Panel id="photoTileList" backgroundColor="#FFFFFF" height="179" width="430" paddingLeft="10" paddingTop="20" creationCompleteEffect="{loadXML()}">
-		<!--<mx:Image source="http://media2.telecoms.com/loader_flash/cws_slide/images/cws_photo2.png"  scaleContent="false" width="200" height="100"/>-->
-		<mx:Label text="{model.photoAdresses.image[0].url}" width="341" height="108"/>
-	</mx:Panel>
+	<mx:HorizontalList id="photoTileList" backgroundColor="#FFFFFF" height="179" width="430"
+		 paddingLeft="10" paddingTop="20" dataProvider="{model.photoObjects}" itemRenderer="{ImageRenderer}"
+		 columnCount="4" rowHeight="400" columnWidth="300">
+	</mx:HorizontalList>
 </mx:HBox>
