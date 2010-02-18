@@ -3,9 +3,7 @@
 <mx:Script>
 	<![CDATA[
 		import com.telecoms.media.flexGallery.control.events.gallery.LoadImagesEvent;
-		import mx.core.UIComponent;
 		import mx.controls.Image;
-		import com.telecoms.media.flexGallery.control.command.CreateImageHolder;
  		import com.telecoms.media.flexGallery.model.PhotosModelLocator;
 		
 		[Bindable]
