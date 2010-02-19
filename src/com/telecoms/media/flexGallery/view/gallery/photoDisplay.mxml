@@ -1,19 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:HBox xmlns:mx="http://www.adobe.com/2006/mxml" backgroundColor="0x000000" height="200" width="450" paddingLeft="10" paddingTop="10">
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" backgroundColor="0x000000" 
+		height="200" width="450" paddingTop="10" horizontalAlign="center" 
+		horizontalScrollPolicy="off" verticalScrollPolicy="off">
 <mx:Script>
 	<![CDATA[
 		import com.telecoms.media.flexGallery.control.events.gallery.LoadImagesEvent;
 		import mx.controls.Image;
  		import com.telecoms.media.flexGallery.model.PhotosModelLocator;
+        import mx.events.SliderEvent;
 		
 		[Bindable]
 		public var model:PhotosModelLocator = PhotosModelLocator.getInstance();
+		// Load Image data
 		private function loadXML():void
 		{
 			var event:LoadImagesEvent=null;
 			event=new LoadImagesEvent();
 			event.dispatch();
 		}
+		
+		// Button Controls for navigating images
+        private function prev():void {
+            var pos:int = photoTileList.horizontalScrollPosition-1;
+            var min:int = 0;
+            var value:int = Math.max(min, pos);
+            photoTileList.horizontalScrollPosition = value;
+        }
+        private function next():void {
+            var pos:int = photoTileList.horizontalScrollPosition+1;
+            var max:int = photoTileList.maxHorizontalScrollPosition;
+            var value:int = Math.min(pos, max);
+            photoTileList.horizontalScrollPosition = value;
+        }
 	]]>
 </mx:Script>
 
@@ -23,8 +41,12 @@
 		</mx:VBox>
     </mx:Component>
 		
-	<mx:HorizontalList id="photoTileList" backgroundColor="#FFFFFF" height="179" width="430"
+	<mx:HorizontalList id="photoTileList" backgroundColor="#FFFFFF" width="430"
 		 dataProvider="{model.photoObjects}" itemRenderer="{ImageRenderer}"
-		 columnCount="4" rowHeight="150" columnWidth="200">
+		 columnCount="4" rowHeight="150" columnWidth="200" horizontalScrollPolicy="off" verticalScrollPolicy="off">
 	</mx:HorizontalList>
-</mx:HBox>
+	<mx:HBox>		
+		<mx:Button label="Previous" click="prev();"/>
+		<mx:Button label="Next" click="next();"/>
+	</mx:HBox>
+</mx:VBox>
