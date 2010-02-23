@@ -4,6 +4,7 @@ package com.telecoms.media.flexGallery.control.command
 	import com.adobe.cairngorm.control.CairngormEvent;
 	import com.telecoms.media.flexGallery.control.delegates.LoadImagesDelegate;
 	import com.telecoms.media.flexGallery.model.PhotosModelLocator;
+	import flash.external.ExternalInterface;
 	
 	import mx.controls.Alert;
 	import mx.rpc.Responder;
@@ -32,6 +33,9 @@ package com.telecoms.media.flexGallery.control.command
 			var photo:String = new String;
 			photo = model.photoAdresses.images[i].url;
 			model.photoObjects.addItem(photo);
+			
+			//Correct Firefox 'Transferring from bug'
+			ExternalInterface.call('forceloaddone');
 			}
 		}
 	}

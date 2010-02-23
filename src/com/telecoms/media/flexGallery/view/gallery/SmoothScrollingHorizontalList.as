@@ -3,8 +3,6 @@
  * */
 package com.telecoms.media.flexGallery.view.gallery
 {
-    import com.telecoms.media.flexGallery.control.events.gallery.HideButtonsEvent;
-    import com.telecoms.media.flexGallery.control.events.gallery.ShowButtonsEvent;
     
     import flash.events.MouseEvent;
     
