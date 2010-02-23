@@ -1,19 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="vertical" height="210" width="450"
 	paddingTop="0" paddingRight="0" paddingBottom="0"
-	paddingLeft="0" creationComplete="galleryInit()">
-	<mx:Script>
-		<![CDATA[
-			import com.telecoms.media.flexGallery.control.events.gallery.LoadImagesEvent;
-			private function galleryInit():void
-			{
-				var event:LoadImagesEvent=null;
-				event=new LoadImagesEvent();
-				event.dispatch();
-			}
-		]]>
-	</mx:Script>
+	paddingLeft="0" creationComplete="photoGallery.loadXML()">
 	<control:PTController xmlns:control="com.telecoms.media.flexGallery.control.*"/>
 	<rds:Services xmlns:rds="com.telecoms.media.flexGallery.business.*"/>
-	<gallery:photoDisplay xmlns:gallery="com.telecoms.media.flexGallery.view.gallery.*"/>
+	<gallery:photoDisplay xmlns:gallery="com.telecoms.media.flexGallery.view.gallery.*" id="photoGallery"/>
 </mx:Application>

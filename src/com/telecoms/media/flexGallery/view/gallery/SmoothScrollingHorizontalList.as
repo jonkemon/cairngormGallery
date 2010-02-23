@@ -26,8 +26,6 @@ package com.telecoms.media.flexGallery.view.gallery
             horizontalScrollPolicy = ScrollPolicy.OFF;
            
             addEventListener( FlexEvent.UPDATE_COMPLETE, handleUpdateComplete);
-            this.addEventListener(MouseEvent.MOUSE_OVER, showButtons);
-            this.addEventListener(MouseEvent.MOUSE_OUT, hideButtons);
         }
        
         private function handleUpdateComplete( event:FlexEvent ):void
@@ -78,17 +76,5 @@ package com.telecoms.media.flexGallery.view.gallery
            
             return arr;
         }
-        private function showButtons(Event:MouseEvent):void
-        {
-        	var event:ShowButtonsEvent=null;
-			event=new ShowButtonsEvent();
-			event.dispatch();
-        }
-        private function hideButtons(Event:MouseEvent):void
-        {
-        	var event:HideButtonsEvent=null;
-			event=new HideButtonsEvent();
-			event.dispatch();
-        }        
     }
 }

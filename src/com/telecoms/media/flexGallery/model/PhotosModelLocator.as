@@ -8,7 +8,6 @@ package com.telecoms.media.flexGallery.model
 		static public var __instance:PhotosModelLocator=null;
 		public var photoAdresses:XML = new XML;
 		public var photoObjects:ArrayCollection = new ArrayCollection;
-		public var buttonState:Boolean = false;
 		static public function getInstance():PhotosModelLocator
 		{
 			if(__instance == null)

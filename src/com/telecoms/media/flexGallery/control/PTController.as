@@ -14,8 +14,6 @@ package com.telecoms.media.flexGallery.control
 		{
 			super();
 			addCommand(LoadImagesEvent.EVENT_ID, LoadImagesCommand);
-			addCommand(ShowButtonsEvent.EVENT_ID, ShowButtonsCommand);
-			addCommand(HideButtonsEvent.EVENT_ID, HideButtonsCommand);
 		}
 		
 	}
