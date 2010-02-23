@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="vertical" creationComplete="galleryInit()">
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="vertical" height="210" width="450"
+	paddingTop="0" paddingRight="0" paddingBottom="0"
+	paddingLeft="0" creationComplete="galleryInit()">
 	<mx:Script>
 		<![CDATA[
 			import com.telecoms.media.flexGallery.control.events.gallery.LoadImagesEvent;

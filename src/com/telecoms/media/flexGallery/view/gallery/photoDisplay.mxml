@@ -1,16 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" backgroundColor="0x000000" 
-		height="200" width="450" paddingTop="10" horizontalAlign="center" 
-		horizontalScrollPolicy="off" verticalScrollPolicy="off">
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" backgroundColor="0x000000" 
+		height="100%" 
+		width="100%" 
+		paddingTop="5"
+		paddingBottom="5"
+		horizontalScrollPolicy="off" 
+		verticalScrollPolicy="off"
+		xmlns:gallery="com.telecoms.media.flexGallery.view.gallery.*" 
+		xmlns:controls="com.benclinkinbeard.controls.*" 
+		y="0"
+		>
 <mx:Script>
 	<![CDATA[
+		import mx.effects.Tween;
 		import com.telecoms.media.flexGallery.control.events.gallery.LoadImagesEvent;
 		import mx.controls.Image;
  		import com.telecoms.media.flexGallery.model.PhotosModelLocator;
         import mx.events.SliderEvent;
+        import com.telecoms.media.flexGallery.view.gallery.SmoothScrollingHorizontalList;
+        import mx.effects.easing.*;
 		
 		[Bindable]
 		public var model:PhotosModelLocator = PhotosModelLocator.getInstance();
+		private var tween:Tween;
+		private var itemIndex:int = 0;
+		
 		// Load Image data
 		private function loadXML():void
 		{
@@ -18,20 +32,43 @@
 			event=new LoadImagesEvent();
 			event.dispatch();
 		}
-		
+	
 		// Button Controls for navigating images
-        private function prev():void {
-            var pos:int = photoTileList.horizontalScrollPosition-1;
-            var min:int = 0;
-            var value:int = Math.max(min, pos);
-            photoTileList.horizontalScrollPosition = value;
+        private function scrollHorizontalList(dir:String):void
+        {
+            var pos:Number = photoTileList.horizontalScrollPosition;
+            var end:Number = photoTileList.maxVerticalScrollPosition;
+           
+            if(dir == "right"){
+            	if(itemIndex < 1){
+            		itemIndex = 0;
+            	}
+            	itemIndex = itemIndex + 1;
+                end = list.columnWidth * itemIndex;
+                if(tween != null) tween.endTween();
+                tween = new Tween(this, pos, end, 1000, 10, tweenUpdateHandler, tweenEndHandler);
+                tween.easingFunction = Circular.easeOut;
+            } else if (dir == "left") {
+            	if(itemIndex >= model.photoObjects.length - 1){
+            	itemIndex = model.photoObjects.length -2;
+            	}
+            	itemIndex = itemIndex - 1;
+                end = list.columnWidth * itemIndex;
+                if(tween != null) tween.endTween();
+                tween = new Tween(this, pos, end, 1000, 10, tweenUpdateHandler, tweenEndHandler);
+                tween.easingFunction = Circular.easeOut;
+            }
         }
-        private function next():void {
-            var pos:int = photoTileList.horizontalScrollPosition+1;
-            var max:int = photoTileList.maxHorizontalScrollPosition;
-            var value:int = Math.min(pos, max);
-            photoTileList.horizontalScrollPosition = value;
+       
+        private function tweenUpdateHandler(value:String):void
+        {
+            photoTileList.horizontalScrollPosition = Math.round(Number(value)*100)/100;
         }
+       
+        private function tweenEndHandler(value:String):void
+        {
+            //trace('tween end value: ' + value);
+        }        
 	]]>
 </mx:Script>
 
@@ -40,13 +77,17 @@
             <mx:Image source="{data}"/>
 		</mx:VBox>
     </mx:Component>
-		
-	<mx:HorizontalList id="photoTileList" backgroundColor="#FFFFFF" width="430"
-		 dataProvider="{model.photoObjects}" itemRenderer="{ImageRenderer}"
-		 columnCount="4" rowHeight="150" columnWidth="200" horizontalScrollPolicy="off" verticalScrollPolicy="off">
-	</mx:HorizontalList>
-	<mx:HBox>		
-		<mx:Button label="Previous" click="prev();"/>
-		<mx:Button label="Next" click="next();"/>
-	</mx:HBox>
-</mx:VBox>
+	
+	<mx:Canvas id="photoTileList" width="440" height="100%" verticalScrollPolicy="off" horizontalScrollPolicy="off" x="3">
+		<gallery:SmoothScrollingHorizontalList id="list" backgroundColor="#000000" width="100%"
+			 dataProvider="{model.photoObjects}" itemRenderer="{ImageRenderer}"
+			 columnCount="4" columnWidth="267" verticalScrollPolicy="off"
+			 selectable="false" borderColor="#000000"
+			 >
+		</gallery:SmoothScrollingHorizontalList>
+	</mx:Canvas>
+	<mx:Canvas height="100%" width="100%">
+		<mx:Button id="previous" label="Previous" click="scrollHorizontalList('left')" x="10" y="90" visible="{model.buttonState}"/>
+		<mx:Button id="next" label="Next" click="scrollHorizontalList('right')" x="387" y="90" visible="{model.buttonState}"/>
+	</mx:Canvas>
+</mx:Canvas>
