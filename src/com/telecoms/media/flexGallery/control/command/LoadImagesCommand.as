@@ -33,9 +33,6 @@ package com.telecoms.media.flexGallery.control.command
 			var photo:String = new String;
 			photo = model.photoAdresses.images[i].url;
 			model.photoObjects.addItem(photo);
-			
-			//Correct Firefox 'Transferring from bug'
-			ExternalInterface.call('forceloaddone');
 			}
 		}
 	}

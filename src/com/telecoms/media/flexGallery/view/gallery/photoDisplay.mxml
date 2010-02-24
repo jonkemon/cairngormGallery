@@ -22,6 +22,7 @@
         import mx.events.SliderEvent;
         import com.telecoms.media.flexGallery.view.gallery.SmoothScrollingHorizontalList;
         import mx.effects.easing.*;
+		import flash.external.*;
 		
 		[Bindable]
 		public var model:PhotosModelLocator = PhotosModelLocator.getInstance();
@@ -85,7 +86,7 @@
 		<gallery:SmoothScrollingHorizontalList id="list" backgroundColor="#000000" width="100%"
 			 dataProvider="{model.photoObjects}" itemRenderer="{ImageRenderer}"
 			 columnCount="4" columnWidth="267" rowHeight="200" verticalScrollPolicy="off"
-			 selectable="false" borderColor="#000000"
+			 selectable="false" borderColor="#000000" updateComplete="{ExternalInterface.call('forceloaddone');}"
 			 >
 		</gallery:SmoothScrollingHorizontalList>
 	</mx:Canvas>

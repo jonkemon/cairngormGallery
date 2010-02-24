@@ -9,7 +9,7 @@ package com.telecoms.media.flexGallery.view.gallery
     import mx.controls.HorizontalList;
     import mx.core.ScrollPolicy;
     import mx.core.mx_internal;
-    import mx.events.FlexEvent;
+    import mx.events.FlexEvent;   
 
     public class SmoothScrollingHorizontalList extends HorizontalList
     {
