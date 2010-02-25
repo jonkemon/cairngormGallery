@@ -28,6 +28,7 @@
 		public var model:PhotosModelLocator = PhotosModelLocator.getInstance();
 		private var tween:Tween;
 		private var itemIndex:int = 0;
+		private var totalImages:int = -3;
 		
 		// Load Image data
 		public function loadXML():void
@@ -68,7 +69,6 @@
         {
             photoTileList.horizontalScrollPosition = Math.round(Number(value)*100)/100;
         }
-       
         private function tweenEndHandler(value:String):void
         {
             //trace('tween end value: ' + value);
@@ -78,7 +78,7 @@
 
 	<mx:Component id="ImageRenderer">
 		<mx:VBox verticalScrollPolicy="off" horizontalScrollPolicy="off">
-            <mx:Image source="{data}"/>
+            <mx:Image id="imageView" source="{data}"/>
 		</mx:VBox>
     </mx:Component>
 	
@@ -92,6 +92,6 @@
 	</mx:Canvas>
 	<mx:Canvas height="100%" width="100%">
 		<mx:Button id="previous" label="Previous" click="scrollHorizontalList('left')" x="10" y="90"/>
-		<mx:Button id="next" label="Next" click="scrollHorizontalList('right')" x="387" y="90"/>
+		<mx:Button id="next" label="Next" click="scrollHorizontalList('right')" x="385" y="90"/>
 	</mx:Canvas>
 </mx:Canvas>

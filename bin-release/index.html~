@@ -31,12 +31,12 @@
         <param name="movie" value="flexGallery.swf" />
         <!--[if !IE]>-->
         <object type="application/x-shockwave-flash" data="flexGallery.swf" width="450" height="210">
+	<div id="ffbugfix" style="display:none;"></div>
         <!--<![endif]-->
           <p>The latest Flash Player is required to see this content</p>
         <!--[if !IE]>-->
         </object>
         <!--<![endif]-->
 </object>
-<div id="ffbugfix" style="display:none;"></div>
 </body>
 </html>
